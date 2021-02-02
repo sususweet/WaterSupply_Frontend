@@ -1,0 +1,13 @@
+RewriteEngine on
+
+#RewriteCond %{SERVER_PORT} !^443$
+#RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+# 不存在那个文件
+RewriteCond %{REQUEST_FILENAME} !-f
+# 不存在那个目录
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+#RewriteCond %{HTTP_HOST} ^www.zju-lab.cn$ [NC]
+#RewriteRule ^(.*)$ https://enrollment.zju-lab.cn/$1 [R=301,L]
+SetEnv CI_ENV development
+
